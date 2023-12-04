@@ -1,8 +1,12 @@
+import os
+from dotenv import load_dotenv
 from langchain.chains import create_extraction_chain
 from langchain.chat_models import ChatOpenAI
 from langchain.document_loaders import UnstructuredFileLoader
 
-llm = ChatOpenAI(temperature=0, model="gpt-3.5-turbo-0613", openai_api_key="YOUR_OPENAI_API_KEY")
+load_dotenv()
+OPEN_AI_KEY=os.getenv("OPEN_API_KEY")
+llm = ChatOpenAI(temperature=0, model="gpt-3.5-turbo-0613", openai_api_key=OPEN_AI_KEY)
 
 schema = {
     "properties": {
